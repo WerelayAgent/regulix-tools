@@ -1,0 +1,22 @@
+{
+  "name": "regulix-tools",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Regulix Tools ($RLIX) — The Sovereign Launchpad, Block 0 Bundler & Multi-Wallet Trading Infrastructure for pump.fun on Solana.",
+  "scripts": {
+    "build": "echo 'Static build ready'"
+  },
+  "keywords": [
+    "regulix",
+    "regulix-tools",
+    "pumpfun",
+    "solana",
+    "launchpad",
+    "bundler",
+    "block0",
+    "multi-wallet",
+    "trading"
+  ],
+  "author": "Regulix Tools Community",
+  "license": "MIT"
+}

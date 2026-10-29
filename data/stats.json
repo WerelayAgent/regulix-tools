@@ -1,0 +1,9 @@
+{
+  "total_bundled_launches": 1845,
+  "volume_routed_sol": "142,890 SOL",
+  "active_wallets_connected": 24150,
+  "bundle_success_rate": "99.8%",
+  "fee_waiver_holders": 680,
+  "holder_min_threshold": "0.1% $RLIX",
+  "avg_block0_landing_ms": 185
+}

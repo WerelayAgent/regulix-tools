@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Studio — Regulix Tools</title>
+  <meta name="description" content="Generate project landing page, vector logo, X banners, bio, and launch tweet thread in seconds using Claude compute." />
+  
+  <link rel="icon" href="/favicon.ico" sizes="48x48" type="image/x-icon" />
+  <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/apple-icon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/css/style.css" />
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <div class="bg-aurora"></div>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="/" class="nav-brand">
+        <img src="/icon.svg" alt="Regulix Logo" />
+        <span>REGULIX <span class="cyan-gradient">TOOLS</span></span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="/" class="nav-link">Home</a></li>
+        <li><a href="/app" class="nav-link">Launch Terminal</a></li>
+        <li><a href="/studio" class="nav-link active">AI Studio</a></li>
+        <li><a href="/docs" class="nav-link">Documentation</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="ca-copy-btn btn-sm" onclick="copyCA()">
+          <span class="ca-pulse"></span>
+          <span>$RLIX: live now on pump.fun</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main style="padding: 60px 0 100px;">
+    <div class="container" style="max-width: 960px;">
+      <div style="text-align: center; margin-bottom: 40px;">
+        <div class="hero-tag" style="background: rgba(121, 40, 202, 0.1); border-color: rgba(121, 40, 202, 0.3); color: #D68BFF;">
+          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+          <span>CLAUDE COMPUTE INTEGRATED</span>
+        </div>
+        <h1 style="font-size: 2.8rem; font-weight: 800; margin-bottom: 14px;">Regulix AI Studio</h1>
+        <p style="color: var(--text-muted); font-size: 1.1rem; max-width: 620px; margin: 0 auto;">
+          Describe your token concept in plain words. Watch AI generate your landing page, vector logo, X banners, bio, and viral launch pitch in seconds.
+        </p>
+      </div>
+
+      <!-- Studio Input Card -->
+      <div style="background: var(--bg-card); border: 1px solid var(--border-card); border-radius: 18px; padding: 32px; backdrop-filter: blur(16px); box-shadow: 0 16px 40px rgba(0,0,0,0.5);">
+        <label class="form-label" style="font-size: 1rem; color: #fff; margin-bottom: 10px;">Token Concept or Narrative</label>
+        <textarea id="studioInput" class="form-input" rows="4" placeholder="e.g. A hyper-futuristic dog wearing a neon astronaut visor launching on pump.fun with a community treasury and block-0 bundle protection..."></textarea>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px; flex-wrap: wrap; gap: 14px;">
+          <div style="display: flex; gap: 10px;">
+            <button class="btn btn-outline btn-sm" onclick="document.getElementById('studioInput').value='Futuristic dog memecoin with neon cyber aesthetics and high energy'; runStudioPrompt();">Example 1</button>
+            <button class="btn btn-outline btn-sm" onclick="document.getElementById('studioInput').value='Autonomous AI trading agent mascot on Solana trench wars'; runStudioPrompt();">Example 2</button>
+          </div>
+
+          <button class="btn btn-purple" onclick="runStudioPrompt()">
+            <span>Generate Full dApp & Assets</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Live Dynamic Output Container -->
+      <div id="studioOutput" style="margin-top: 32px; display: none;"></div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-bottom" style="border: none;">
+      <div>&copy; 2026 Regulix Tools. Powered by Claude Compute.</div>
+      <div style="font-family: var(--font-mono); color: var(--cyan); cursor: pointer;" onclick="copyCA()">
+        $RLIX: live now on pump.fun
+      </div>
+    </div>
+  </footer>
+
+  <script src="/assets/js/main.js"></script>
+</body>
+</html>

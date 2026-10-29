@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Launch Terminal & Trading Workspace — Regulix Tools</title>
+  <meta name="description" content="Configure Block 0 bundles, generate and distribute 200 holder wallets, and trade multi-wallets simultaneously." />
+  
+  <link rel="icon" href="/favicon.ico" sizes="48x48" type="image/x-icon" />
+  <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/apple-icon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/css/style.css" />
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <div class="bg-aurora"></div>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="/" class="nav-brand">
+        <img src="/icon.svg" alt="Regulix Logo" />
+        <span>REGULIX <span class="cyan-gradient">TOOLS</span></span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="/" class="nav-link">Home</a></li>
+        <li><a href="/app" class="nav-link active">Launch Terminal</a></li>
+        <li><a href="/studio" class="nav-link">AI Studio</a></li>
+        <li><a href="/docs" class="nav-link">Documentation</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="ca-copy-btn btn-sm" onclick="copyCA()">
+          <span class="ca-pulse"></span>
+          <span>$RLIX: live now on pump.fun</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main style="padding: 40px 0 80px;">
+    <div class="container">
+      <!-- Terminal Header / Status Bar -->
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; flex-wrap: wrap; gap: 16px;">
+        <div>
+          <h1 style="font-size: 1.8rem; font-weight: 800;">Launch & Trading Terminal</h1>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">Atomic Block-0 bundling & synchronized multi-wallet execution</p>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <div style="background: rgba(0, 230, 118, 0.1); border: 1px solid rgba(0, 230, 118, 0.3); padding: 6px 14px; border-radius: 8px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--green); display: flex; align-items: center; gap: 6px;">
+            <span class="ca-pulse"></span>
+            <span>JITO RPC: OPTIMAL (18ms)</span>
+          </div>
+          <button class="btn btn-outline btn-sm" onclick="showToast('Wallet memory reset')">Reset Memory</button>
+        </div>
+      </div>
+
+      <!-- Main Workspace Container -->
+      <div class="interactive-showcase" style="margin-top: 0;">
+        <div class="terminal-header">
+          <div class="terminal-dots">
+            <span class="terminal-dot dot-red"></span>
+            <span class="terminal-dot dot-yellow"></span>
+            <span class="terminal-dot dot-green"></span>
+          </div>
+
+          <!-- Navigation Tabs -->
+          <div class="terminal-tabs">
+            <button class="terminal-tab workspace-tab active" data-tab="tab-bundler" onclick="switchWorkspaceTab('tab-bundler')">1. BLOCK 0 BUNDLER</button>
+            <button class="terminal-tab workspace-tab" data-tab="tab-wallets" onclick="switchWorkspaceTab('tab-wallets')">2. WALLET DISTRIBUTION (200)</button>
+            <button class="terminal-tab workspace-tab" data-tab="tab-trading" onclick="switchWorkspaceTab('tab-trading')">3. LIVE CHART TRADING</button>
+            <button class="terminal-tab workspace-tab" data-tab="tab-utils" onclick="switchWorkspaceTab('tab-utils')">4. UTILITIES</button>
+          </div>
+
+          <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted);">
+            SECURITY: CLIENT MEMORY ONLY
+          </div>
+        </div>
+
+        <div class="terminal-body">
+          <!-- TAB 1: BLOCK 0 BUNDLER -->
+          <div id="tab-bundler" class="workspace-content" style="display: block;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px;">
+              <div>
+                <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 16px; color: #fff;">Token Launch Configuration</h3>
+                
+                <div class="form-group">
+                  <label class="form-label">Token Name</label>
+                  <input type="text" class="form-input" placeholder="e.g. CyberPepe Sovereign" value="CyberPepe Sovereign" />
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Token Symbol / Ticker</label>
+                  <input type="text" class="form-input" placeholder="e.g. $CPEP" value="$CPEP" />
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Description / Bio</label>
+                  <textarea class="form-input" rows="3" style="resize: vertical;">The first decentralized memecoin with Block-0 anti-snipe defense.</textarea>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Initial Dev Buy Amount (SOL)</label>
+                  <input type="number" class="form-input" value="1.5" step="0.1" />
+                </div>
+              </div>
+
+              <div>
+                <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 16px; color: #fff;">Jito Bundle & Anti-Snipe Settings</h3>
+
+                <div class="form-group">
+                  <label class="form-label">Jito MEV Tip Amount (SOL)</label>
+                  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+                    <button type="button" class="btn btn-outline btn-sm active" style="border-color: var(--cyan); color: var(--cyan);">Normal (0.01 SOL)</button>
+                    <button type="button" class="btn btn-outline btn-sm">Turbo (0.025 SOL)</button>
+                    <button type="button" class="btn btn-outline btn-sm">Ultra (0.05 SOL)</button>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Slippage Tolerance</label>
+                  <input type="text" class="form-input" value="15%" />
+                </div>
+
+                <div style="background: rgba(0, 240, 255, 0.05); border: 1px solid var(--border-card); border-radius: 10px; padding: 18px; margin-bottom: 24px;">
+                  <div style="font-size: 0.85rem; font-weight: 700; color: var(--cyan); margin-bottom: 6px;">BLOCK 0 ATOMIC GUARANTEE</div>
+                  <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.5;">
+                    Your token creation and first buy orders will be dispatched simultaneously in an atomic Jito bundle. If the block-0 position fails, all transactions revert without any capital loss.
+                  </p>
+                </div>
+
+                <button class="btn btn-primary" style="width: 100%; padding: 14px;" onclick="executeMassAction('Launch Block-0 Bundle')">
+                  <span>DISPATCH ATOMIC BUNDLE (PUMP.FUN)</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 2: WALLET DISTRIBUTION -->
+          <div id="tab-wallets" class="workspace-content" style="display: none;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;">
+              <div>
+                <h3 style="font-size: 1.2rem; font-weight: 700; color: #fff;">200-Wallet Generator & Supply Spreader</h3>
+                <p style="font-size: 0.85rem; color: var(--text-muted);">Generate sub-wallets, fund them automatically, and distribute initial buy allocations.</p>
+              </div>
+
+              <div style="display: flex; gap: 10px;">
+                <button class="btn btn-outline btn-sm" onclick="generateSubWallets(10)">Gen 10 Wallets</button>
+                <button class="btn btn-outline btn-sm" onclick="generateSubWallets(50)">Gen 50 Wallets</button>
+                <button class="btn btn-outline btn-sm" onclick="generateSubWallets(200)">Gen 200 Wallets</button>
+                <button class="btn btn-primary btn-sm" onclick="showToast('Wallets JSON exported', '📥')">Export JSON</button>
+              </div>
+            </div>
+
+            <!-- Table -->
+            <div style="background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 10px; overflow-x: auto;">
+              <table style="width: 100%; border-collapse: collapse; text-align: left;">
+                <thead>
+                  <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1); background: rgba(255, 255, 255, 0.02); font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase;">
+                    <th style="padding: 12px 14px;">Index</th>
+                    <th style="padding: 12px 14px;">Solana Address</th>
+                    <th style="padding: 12px 14px;">SOL Balance</th>
+                    <th style="padding: 12px 14px;">Allocated %</th>
+                    <th style="padding: 12px 14px;">Status</th>
+                  </tr>
+                </thead>
+                <tbody id="walletListTable">
+                  <!-- Generated dynamically via JS -->
+                </tbody>
+              </table>
+            </div>
+
+            <div style="margin-top: 20px; display: flex; justify-content: flex-end; gap: 12px;">
+              <button class="btn btn-outline" onclick="showToast('Dispatched funding transactions across sub-wallets!')">Fund All Sub-Wallets</button>
+              <button class="btn btn-purple" onclick="showToast('Mass buy orders primed for block 0!')">Prime Distribution Orders</button>
+            </div>
+          </div>
+
+          <!-- TAB 3: LIVE CHART TRADING -->
+          <div id="tab-trading" class="workspace-content" style="display: none;">
+            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 24px;">
+              <div class="chart-container" style="height: 400px;">
+                <div class="chart-stats-row">
+                  <span style="color: #fff; font-weight: 700;">REGULIX LIVE WORKSPACE</span>
+                  <span style="color: var(--cyan);">Pair: pump.fun/SOL</span>
+                  <span style="color: var(--green);">Execution Mode: Synchronous Multi-Wallet</span>
+                </div>
+                <div style="height: 330px; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.5); border-radius: 8px;">
+                  <div style="text-align: center;">
+                    <div class="ca-pulse" style="width: 16px; height: 16px; margin: 0 auto 12px;"></div>
+                    <p style="color: #fff; font-weight: 600;">Trading Terminal Active</p>
+                    <p style="color: var(--text-muted); font-size: 0.85rem;">Listening to pump.fun WebSocket stream for block confirmations</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Mass Execution Box -->
+              <div style="background: rgba(8, 11, 18, 0.8); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                  <h4 style="font-size: 1.1rem; color: #fff; margin-bottom: 16px;">Syndicate Order Controls</h4>
+
+                  <div class="form-group">
+                    <label class="form-label">Single-Click Action Type</label>
+                    <select class="form-input">
+                      <option>Equal SOL Split Across All Wallets</option>
+                      <option>Randomized Non-Uniform Split</option>
+                      <option>Staggered 250ms Delay Ladder</option>
+                    </select>
+                  </div>
+
+                  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px;">
+                    <button class="btn btn-primary btn-sm" onclick="executeMassAction('Mass Buy All')">Mass Buy</button>
+                    <button class="btn btn-outline btn-sm" onclick="executeMassAction('Sell 25%')">Sell 25% All</button>
+                  </div>
+
+                  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px;">
+                    <button class="btn btn-outline btn-sm" onclick="executeMassAction('Sell 50%')">Sell 50% All</button>
+                    <button class="btn btn-outline btn-sm" style="border-color: var(--red); color: var(--red);" onclick="executeMassAction('Sell 100%')">Sell 100% All</button>
+                  </div>
+                </div>
+
+                <div style="background: rgba(0, 0, 0, 0.5); padding: 12px; border-radius: 8px; font-size: 0.8rem; color: var(--text-muted);">
+                  Holding 0.1% $RLIX detected: <strong>0% Platform Fee Active</strong>.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 4: UTILITIES -->
+          <div id="tab-utils" class="workspace-content" style="display: none;">
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+              <div style="background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 24px;">
+                <h4 style="color: #fff; margin-bottom: 10px;">Sweep Remaining SOL</h4>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 16px;">Consolidate all leftover dust and rent SOL from all sub-wallets back to your primary dev wallet in one single transaction.</p>
+                <button class="btn btn-outline btn-sm" style="width: 100%;" onclick="showToast('Sweeping leftover SOL across all wallets...')">Execute Sweep</button>
+              </div>
+
+              <div style="background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 24px;">
+                <h4 style="color: #fff; margin-bottom: 10px;">Claim Creator Fees</h4>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 16px;">Directly withdraw accumulated creator rewards and trade fees generated on pump.fun without manual token interaction.</p>
+                <button class="btn btn-outline btn-sm" style="width: 100%;" onclick="showToast('Creator fees claimed to primary wallet!')">Claim Fees</button>
+              </div>
+
+              <div style="background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 24px;">
+                <h4 style="color: #fff; margin-bottom: 10px;">Batch Airdrop Tool</h4>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 16px;">Upload a CSV of Solana public keys to distribute tokens to early community members and contest winners in compressed batches.</p>
+                <button class="btn btn-outline btn-sm" style="width: 100%;" onclick="showToast('Airdrop batch prepared!')">Upload CSV</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-bottom" style="border: none;">
+      <div>&copy; 2026 Regulix Tools. Sovereign pump.fun launchpad.</div>
+      <div style="font-family: var(--font-mono); color: var(--cyan); cursor: pointer;" onclick="copyCA()">
+        $RLIX: live now on pump.fun
+      </div>
+    </div>
+  </footer>
+
+  <script src="/assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Documentation — Regulix Tools</title>
+  <meta name="description" content="Technical documentation, Block-0 bundling architecture, 200-wallet distribution guides, and $RLIX fee waiver specifications." />
+  
+  <link rel="icon" href="/favicon.ico" sizes="48x48" type="image/x-icon" />
+  <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/apple-icon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/css/style.css" />
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <div class="bg-aurora"></div>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="/" class="nav-brand">
+        <img src="/icon.svg" alt="Regulix Logo" />
+        <span>REGULIX <span class="cyan-gradient">TOOLS</span></span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="/" class="nav-link">Home</a></li>
+        <li><a href="/app" class="nav-link">Launch Terminal</a></li>
+        <li><a href="/studio" class="nav-link">AI Studio</a></li>
+        <li><a href="/docs" class="nav-link active">Documentation</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="ca-copy-btn btn-sm" onclick="copyCA()">
+          <span class="ca-pulse"></span>
+          <span>$RLIX: live now on pump.fun</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main style="padding: 60px 0 100px;">
+    <div class="container" style="max-width: 980px;">
+      <div style="margin-bottom: 40px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 24px;">
+        <span class="section-kicker">TECHNICAL MANUAL</span>
+        <h1 style="font-size: 2.6rem; font-weight: 800; margin-top: 8px;">Regulix Tools Protocol Docs</h1>
+        <p style="color: var(--text-muted); font-size: 1.05rem;">Architecture, Jito bundle integration, multi-wallet coordination, and fee waiver economics.</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 240px 1fr; gap: 40px;">
+        <!-- Side Navigation -->
+        <aside style="position: sticky; top: 100px; height: fit-content;">
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px; font-size: 0.9rem;">
+            <li><a href="#overview" style="color: var(--cyan); text-decoration: none; font-weight: 600;">1. System Overview</a></li>
+            <li><a href="#block0" style="color: var(--text-muted); text-decoration: none;">2. Block 0 Bundling</a></li>
+            <li><a href="#distribution" style="color: var(--text-muted); text-decoration: none;">3. 200-Wallet Spreader</a></li>
+            <li><a href="#trading" style="color: var(--text-muted); text-decoration: none;">4. Unified Live Trading</a></li>
+            <li><a href="#security" style="color: var(--text-muted); text-decoration: none;">5. Non-Custodial Security</a></li>
+            <li><a href="#fees" style="color: var(--text-muted); text-decoration: none;">6. $RLIX Fee Waiver</a></li>
+          </ul>
+        </aside>
+
+        <!-- Content Area -->
+        <article style="line-height: 1.7; color: #CED4DA;">
+          <section id="overview" style="margin-bottom: 48px;">
+            <h2 style="font-size: 1.6rem; color: #fff; margin-bottom: 14px;">1. System Overview</h2>
+            <p>
+              Regulix Tools is an institutional-grade launchpad and multi-wallet trading suite specifically architected for the <strong>pump.fun</strong> bonding curve ecosystem on Solana. It solves the critical issues of front-running MEV snipers, bot front-running, and uneven supply distribution.
+            </p>
+          </section>
+
+          <section id="block0" style="margin-bottom: 48px;">
+            <h2 style="font-size: 1.6rem; color: #fff; margin-bottom: 14px;">2. Block 0 Bundling Mechanics</h2>
+            <p>
+              When a token is created via pump.fun's contract, standard mempool transactions are vulnerable to malicious MEV bots that detect the token mint and insert buy orders before or immediately alongside the creator.
+            </p>
+            <p style="margin-top: 12px;">
+              Regulix combines the token creation transaction with up to 200 initial buy orders inside an <strong>Atomic Jito Bundle</strong>. Jito Block Engine validators guarantee that either the complete bundle executes in the exact sequence requested in Block 0, or none of the transactions land.
+            </p>
+          </section>
+
+          <section id="distribution" style="margin-bottom: 48px;">
+            <h2 style="font-size: 1.6rem; color: #fff; margin-bottom: 14px;">3. 200-Wallet Spreader & Anti-Bubble Architecture</h2>
+            <p>
+              Modern on-chain analytics tools (such as Bubblemaps) immediately flag tokens where a single creator wallet holds large percentages of the supply. Regulix automatically shards the developer's designated buy capital across up to 200 unique sub-wallets.
+            </p>
+            <p style="margin-top: 12px;">
+              Users can select between uniform distribution or randomized percentage splits to generate organic on-chain distribution profiles.
+            </p>
+          </section>
+
+          <section id="security" style="margin-bottom: 48px;">
+            <h2 style="font-size: 1.6rem; color: #fff; margin-bottom: 14px;">4. Non-Custodial Security Protocol</h2>
+            <p>
+              All key generation, signing, and bundle assembly operations happen strictly in client-side volatile browser memory. Private keys are never transmitted to backend servers, logged, or cached in persistent storage.
+            </p>
+          </section>
+
+          <section id="fees" style="margin-bottom: 48px;">
+            <h2 style="font-size: 1.6rem; color: #fff; margin-bottom: 14px;">5. $RLIX Fee Waiver & Token Utility</h2>
+            <div style="background: rgba(0, 240, 255, 0.05); border: 1px solid var(--border-card); border-radius: 12px; padding: 20px; margin-top: 14px;">
+              <h4 style="color: var(--cyan); margin-bottom: 8px;">Hold &ge; 0.1% $RLIX for Lifetime 0% Fees</h4>
+              <p style="font-size: 0.9rem; color: var(--text-muted);">
+                The platform verifies $RLIX balance on-chain via connected Solana RPC. Holding at least 1,000,000 $RLIX (0.1% of 1B supply) eliminates all launcher and trading platform fees forever.
+              </p>
+            </div>
+          </section>
+        </article>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-bottom" style="border: none;">
+      <div>&copy; 2026 Regulix Tools Protocol. All rights reserved.</div>
+      <div style="font-family: var(--font-mono); color: var(--cyan); cursor: pointer;" onclick="copyCA()">
+        $RLIX: live now on pump.fun
+      </div>
+    </div>
+  </footer>
+
+  <script src="/assets/js/main.js"></script>
+</body>
+</html>
